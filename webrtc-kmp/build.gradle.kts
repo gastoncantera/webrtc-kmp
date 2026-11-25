@@ -1,5 +1,7 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
+import org.gradle.api.credentials.PasswordCredentials
+import org.gradle.plugins.signing.Sign
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -14,7 +16,7 @@ plugins {
 
 group = "com.shepeliev"
 
-version = providers.environmentVariable("VERSION").getOrElse("0.0.0")
+version = providers.environmentVariable("VERSION").getOrElse("150.7871.08")
 
 kotlin {
     explicitApi()
@@ -154,5 +156,23 @@ mavenPublishing {
             connection = "scm:git:https://github.com/shepeliev/webrtc-kmp.git"
             developerConnection = "scm:git:https://github.com/shepeliev/webrtc-kmp.git"
         }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/gastoncantera/webrtc-kmp")
+            credentials(PasswordCredentials::class)
+        }
+    }
+}
+
+// Maven Central pide firma. Maven local y GitHub Packages no.
+gradle.taskGraph.whenReady {
+    val publishesToMavenCentral = allTasks.any { it.name.contains("MavenCentral") }
+    if (!publishesToMavenCentral) {
+        allTasks.filterIsInstance<Sign>().forEach { it.setRequired(false) }
     }
 }
