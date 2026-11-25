@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/webrtc-sdk/Specs.git",
       "state" : {
-        "revision" : "1aadb8523929f8f2c57de850e88d7afce7ecd1c8",
-        "version" : "137.7151.0"
+        "revision" : "7051268030e9f0e3094b4403dcbe7bef615ba027",
+        "version" : "150.7871.8"
       }
     }
   ],

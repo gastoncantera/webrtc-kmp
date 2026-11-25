@@ -15,7 +15,7 @@ let package = Package(
   dependencies: [
     .package(
       url: "https://github.com/webrtc-sdk/Specs.git",
-      exact: "137.7151.00"
+      exact: "150.7871.08"
     )
   ],
   targets: [

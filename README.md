@@ -12,7 +12,7 @@ It supports Android, iOS, JS. Other platforms - PRs are welcome.
  Screen Capture | :white_check_mark: | | :white_check_mark:
 
 ## WebRTC revision
-Current revision: M137
+Current revision: M150
 
 ## Installation
 The library is published to [Maven Central](https://search.maven.org/artifact/com.shepeliev/webrtc-kmp).
